@@ -6,16 +6,17 @@ int btn1;
   int btn4;
   int btn5;
   int btn6;
-  int cnt=0;
-  bool a=false;
-  bool b=false;
-  bool c=false;
-  bool d=false;
-  bool e=false;
-  bool f=false;
+  int cnt = 0;
+  bool a = false;
+  bool b = false;
+  bool c = false;
+  bool d = false;
+  bool e = false;
+  bool f = false;
   int ent;
   char m;
   int s;
+
 void setup() 
 {
   BTSerial.begin(9600);
@@ -30,24 +31,49 @@ void setup()
   pinMode(11,INPUT);
   
 }
+
 void loop() 
 {
   
- btn1=digitalRead(7);
- btn2=digitalRead(2);
- btn3=digitalRead(3);
- btn4=digitalRead(4);
- btn5=digitalRead(5);
- btn6=digitalRead(6);
- ent =digitalRead(10);
- s=digitalRead(11);
+ btn1 = digitalRead(7);
+ btn2 = digitalRead(2);
+ btn3 = digitalRead(3);
+ btn4 = digitalRead(4);
+ btn5 = digitalRead(5);
+ btn6 = digitalRead(6);
+ ent = digitalRead(10);
+ s = digitalRead(11);
  
-  if(btn1==1 && a==false )  {cnt=cnt+1; btn1=0; a=true;}
-  if(btn2==1 && b==false )  {cnt=cnt+2; btn2=0;b=true;  }
-  if(btn3==1 && c==false )  {cnt=cnt+7; btn3=0; c=true;  }
-  if(btn4==1 && d==false )  {cnt=cnt+13; btn4=0; d=true;  } 
-  if(btn5==1 && e==false )  {cnt=cnt+24; btn5=0; e=true;  }
-  if(btn6==1 && f==false )  {cnt=cnt+49; btn6=0; f=true;  }
+  if(btn1 == 1 && a == false) {
+    cnt = cnt + 1; 
+    btn1 = 0; 
+    a = true;
+  }
+  if(btn2 == 1 && b == false) {
+    cnt = cnt + 2;
+    btn2 = 0;
+    b = true;
+  }
+  if(btn3 == 1 && c == false) {
+    cnt = cnt + 7; 
+    btn3 = 0;
+    c = true;
+  }
+  if(btn4 == 1 && d == false ) {
+    cnt = cnt + 13;
+    btn4 = 0;
+    d = true;
+  } 
+  if(btn5 == 1 && e == false ) {
+    cnt = cnt + 24;
+    btn5 = 0;
+    e = true;
+    }
+  if(btn6 == 1 && f == false ) {
+    cnt = cnt + 49;
+    btn6 = 0;
+    f = true;
+  }
  
 
 if(cnt==1 && ent==1 && s==0) {cnt=100;a=false; b=false;c=false;  d=false;  e=false;  f=false; BTSerial.println("A"); ent=0;delay(100);}
@@ -158,18 +184,6 @@ if( cnt==133 && ent==1) {Serial.print("9");  ent=0; cnt=0;}
 
 if(cnt==39 && ent==1 && s==1) {cnt=134; a=false;b=false;c=false;d=false; e=false;  f=false;  BTSerial.println("0"); ent=0; delay(100);}
 if( cnt==134 && ent==1) {Serial.print("0");  ent=0; cnt=0;}
-
-
-
-
-if(cnt==24 && ent==1) {cnt=0;a=false;b=false;c=false;d=false; e=false;  f=false; BTSerial.print("Space") Serial.print(" ");ent=0; }
-
-if(cnt==149 || cnt==150 || cnt==151 || cnt==152 || cnt==153 || cnt==154 || cnt==155 || cnt==156 || cnt==157 || cnt==158 || cnt==159 || cnt==160 || cnt==161 || cnt==162 || cnt==163 || cnt==164 || cnt==165 || cnt==166 || cnt==167 || cnt==168 || cnt==169 || cnt==170 || cnt==171 || cnt==172 || cnt==173 || cnt==174 ) {cnt=0;ent=0;}
-
-if(ent==1 && cnt!=81 && cnt!=1 && cnt!=3 && cnt!=14 && cnt!=38 && cnt!=25 && cnt!=16 && cnt!=40 && cnt!=27 && cnt!=15 && cnt!=39 && cnt!=8 && cnt!=10 && cnt!=21 && cnt!=45 && cnt!=32 && cnt!=23 && cnt!=47 && cnt!=34 && cnt!=22 && cnt!=46 && cnt!=57 && cnt!=59 && cnt!=88 && cnt!=70 && cnt!=94) {cnt=0;a=false; b=false;c=false; d=false;  e=false;  f=false; ent=0;}
-
-
-
 
  delay(300);
 }
